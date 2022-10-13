@@ -1,0 +1,51 @@
+Introduction
+This report is intended to demonstrate a software development methodology, Test-Driven Development(TDD), in practice. In this exercise, I used the automated unit testing tool to develop a rock-paper-scissors game program. In the process of developing the game software, I used the Unittest as the automated unit testing tool to perform several simple automated unit tests. TDD is a software development approach that combines test-first development and refactoring. In other words, writing a test before writing the code needed to complete that test. where test cases are developed to specify and verify what the code will do. Simply put, first create and test case for each function, and if the test fails, then write new code to pass the test and make the code simple and bug-free. Unit testing can be explained as a method for testing software that looks at the smallest testable pieces of code, called units, which are tested for correct operation. Unittest (PyUnit) is a Python's built-in unit testing framework and a Python's version of the corresponding JUnit testing framework for Java.
+As part of the game, the basic rules for developing a rock-paper-scissors game are:
+•	rock vs paper -> paper wins
+•	rock vs scissor -> rock wins
+•	paper vs scissor -> scissor wins.
+And it contains the following basic requirements:
+1.	The computer randomly picks one of the options of scissor, paper and rock. 
+2.	Player is then given the option to pick/type one of the options of scissor, paper and rock. 
+3.	One point is given to the winner. 
+4.	The total number of rounds played in total will also be displayed.
+5.	The total number of rounds played in total will also be displayed. 
+6.	Once the winner is determined, the player is asked to quit or restart the game
+7.	Player can also quit the game at any time.
+After all the testing and development is complete, I need to make sure that the game software meets all the requirements and is working properly.
+Process
+In this practice, I am writing a simple rock-paper-scissors scoring system game using python and TDD. I will create two files. The first is the test file and the second is the file containing the actual program:
+First, I will write a test file with the file name test_RockPaperScissors.py. To be consistent, it is best to start the file name with ‘test_’ to indicate that this is a test file. And then, I add a simple test to see if the ‘test_player_choice’ function works properly, as follows:
+ 
+Run the test file and it failed because the ‘RockPaperScissors’ class is not defined yet. So, I created a new empty file named RockPaperScissors.py as shown below:
+ 
+Run the test file again and this time I received a different error message “AttributeError: 'RockPaperScissors' object has no attribute 'player_choice'.”Then I created the functionality ‘ player_choice‘ to the ‘RockPaperScissors', and updated the ‘RockPaperScissors'.py file accordingly:
+ 
+Run the test file again and this time I saw that the test has passed! This was just a start to try to see if I understood what I was actually writing with unittest. After that I chose to do some extensions to 'player_choice' as follows:
+ 
+Next, consider that in the game requirements, the game is required that player can also quit the game at any time. So, I need to make sure that the player input 'quit' is recognizable except for {'rock', 'scissors ', 'paper'}. Also, if the player enters something else that is not valid, it will be recognized and prompted. So, I added two more simple test codes as follows:
+ 
+Run the test file again and I saw that the test has passed again.
+Then, to prepare the game for success, I added several custom functions to be called later including '__init__()', 'random_choice()', 'print_score()'. As follows:
+ 
+'__init__' is used to initialize the variables for the class. This is designed to implement the game's requirements in subsequent game writes, including player and computer punching, indication of the current round, game winning and losing, and the cumulative score of both players.
+ 
+'random_choice' is used to randomly chooses rock, paper, or scissors and then returns 'rock', 'paper', or 'scissors'. This is designed to subsequently make the computer make random punches in each round.
+ 
+'print_score' is used to print a string reflecting the current player score, and it will return nothing, but just prints the current score. Considering that these custom functions are very simple actions, some of the tests were omitted.
+The next very important step is that I need to create a test to determine whether each round of punches results in a player score or a computer score. So, I created the following test code:
+ 
+And after a brief reflection on the full range of possibilities it was expanded as follow. The test file below is now updated with more tests in ‘player_choice’and‘check_win’.
+ 
+Then I created the code to be tested, ‘check_win’, to the RockPaperScissors'.py file. 
+ 
+Then, I run the test file again and I saw that the test has all passed! The screenshot is as follow:
+ 
+This looks very nice. Immediately after that I called some of the functions I created earlier and created a new 'run_game' function that completes the game and helps the game to achieve the basic run requirements. Its return satisfies several game requirements of player and computer's choice every round, cumulative points per round, and the total number of rounds played in total. Also, it will achieve that The first to get 5 points wins the game:
+ 
+In this function, I also added some detailed optimizations, such as low.() to enable the player to enter uppercase or lowercase letters without affecting the normal operation of the game.
+ 
+Finally, I added a game restart at the end. Since It is the last simple step I did not write a separate custom function as follows:
+ 
+  
+Thus, the rock-paper-scissors scoring game was successfully developed and met all the basic requirements and was running smoothly.
