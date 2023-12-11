@@ -1,4 +1,4 @@
-# 582-RockScissorsPaperGame
+RockScissorsPaperGame
 As part of the game, the basic rules for developing a rock-paper-scissors game are:
 •	rock vs paper -> paper wins
 •	rock vs scissor -> rock wins
